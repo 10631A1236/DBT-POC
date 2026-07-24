@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Staging table for franchise customer reviews"
+
+    columns:
+      - name: franchise_id
+        data_type: int
+
+      - name: chunk_id
+        data_type: string
+
+      - name: review_date
+        data_type: timestamp
+
+      - name: review_uri
+        data_type: string
+
+semantic_models:
+  - name: semantic_reviews
+    description: "Semantic model for franchise customer reviews"
+
+    model: ref('stg_customers')
+
+    defaults:
+      agg_time_dimension: review_date
+
+    entities:
+      - name: franchise_id
+        type: primary
+
+      - name: chunk_id
+        type: unique
+
+    dimensions:
+      - name: review_date
+        type: time
+        type_params:
+          time_granularity: day
+
+      - name: review_uri
+        type: categorical
+
+    measures:
+      - name: total_reviews
+        description: "Total reviews"
+        agg: count
+        expr: chunk_id
+
+metrics:
+  - name: review_count
+    description: "Total number of franchise reviews"
+    type: simple
+
+    type_params:
+      measure: total_reviews

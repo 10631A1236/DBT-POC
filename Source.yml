@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: default
+    description: "Raw ingestion tables from the lakehouse"
+    catalog: main      # <-- MUST be nested directly under the source name
+    schema: default 
+    
+    tables:
+      - name: san_test  # <-- Lowercased to match Databricks Catalog Explorer
+        description: "Raw customer ingestion table"
