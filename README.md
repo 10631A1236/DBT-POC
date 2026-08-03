@@ -1,15 +1,21 @@
-Welcome to your new dbt project!
+DBT Customer Analytics POC
 
-### Using the starter project
+Overview
+This project demonstrates how dbt can be used to transform raw customer data into analytics-ready models.
 
-Try running the following commands:
-- dbt run
-- dbt test
+Tech Stack
+• dbt Core
+• Snowflake
+• SQL
 
+Project Structure
+models/
+sources/
+tests/
+macros/
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+Key Features
+• Source freshness
+• Schema tests
+• Documentation
+• Data lineage
